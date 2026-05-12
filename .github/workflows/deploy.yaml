@@ -23,6 +23,14 @@ jobs:
 
             - name: API Dependency Install
               working-directory: ./api
-              run: npm install 
+              run: npm install           
+
+            - name: API unit test
+              working-directory: ./api
+              run: npm run test
+
+            - name: Frontend Dependency Install
+              working-directory: ./frontend
+              run: npm install
 
     
