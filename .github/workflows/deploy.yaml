@@ -6,12 +6,23 @@ on:
 
 jobs:
     build-and-deploy:
-        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            os: [ubuntu-latest]
+            node-version: ["24.15.0"]
+
+        runs-on: ${{matrix.os}}
         steps:
             - name: Cloning Repository
               uses: actions/checkout@v6
             
-            - name: Install Node.js
+            - name: Install Node.js ${{matrix.node-version}}
               uses: actions/setup-node@v6
+              with:
+                node-version: ${{matrix.node-version}}
+
+            - name: API Dependency Install
+              working-directory: ./api
+              run: npm install 
 
     
