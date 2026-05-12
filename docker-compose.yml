@@ -1,8 +1,9 @@
-version: '3'
+# version: '3'
 
 services:
   frontend:
-    build: ./frontend
+    # build: ./frontend
+    image: moguda/ta_front
     restart: always
     # volumes:
     #   - /app/node_modules
@@ -10,7 +11,8 @@ services:
     ports:
       - '3000:3000'
   api:
-    build: ./api
+    # build: ./api
+    iamge: moguda/ta_api
     restart: always
     # volumes:
     #   - /app/node_modules
