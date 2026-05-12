@@ -7,5 +7,5 @@ test("10/2 equqals 5", ()=>{
 })
 
 test("21/3 equqals 7", ()=>{
-    expect(division(21, 6)).toBe(7);
+    expect(division(21, 3)).toBe(7);
 })
