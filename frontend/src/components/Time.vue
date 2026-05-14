@@ -30,7 +30,7 @@ export default {
   <div class="greetings">
     <h1 class="green">{{ currentTime }}</h1>
     <h3>Verilənlər bazasına qeyd etmək üçün düyməyə bas:</h3>
-    <button @click="saveTime">SSH port = 22</button>
+    <button @click="saveTime">Vaxtı qeyd et</button>
     <h3 v-if="savedTimes.length && showSavedTimes">
       Previously saved my times:
     </h3>
