@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: AWS VM SSH connect and deploy
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.0.1
         with:
           host: ${{secrets.AWS_HOST}}
           username: ${{secrets.AWS_USERNAME}}
