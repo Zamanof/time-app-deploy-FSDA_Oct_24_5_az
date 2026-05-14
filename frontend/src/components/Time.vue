@@ -30,7 +30,7 @@ export default {
   <div class="greetings">
     <h1 class="green">{{ currentTime }}</h1>
     <h3>Verilənlər bazasına qeyd etmək üçün düyməyə bas:</h3>
-    <button @click="saveTime">Vaxtı qeyd et</button>
+    <button @click="saveTime">SSH port = 22</button>
     <h3 v-if="savedTimes.length && showSavedTimes">
       Previously saved my times:
     </h3>
@@ -62,7 +62,7 @@ h3 {
 button {
   font-size: 1.5rem;
   margin: 30px;
-  background-color: rgb(235, 136, 8);
+  background-color: rgb(237, 207, 255);
   border-radius: 5px;
   border: none;
   padding: 10px;
