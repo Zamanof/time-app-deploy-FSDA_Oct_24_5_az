@@ -3,9 +3,12 @@ name: CI/CD for time-app deploy to ec2
 on:
   push: 
     branches: ["main"]
+  
+  workflow_dispatch:
 
 jobs:
   test:
+    if: github.event_name == 'push'
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -34,6 +37,7 @@ jobs:
         run: npm install
 
   build-and-push:
+    if: github.event_name == 'push'
     needs: test
     strategy:
       matrix:
@@ -58,7 +62,7 @@ jobs:
           docker push ${{secrets.DOCKER_USERNAME}}/ta_front
   
   aws-vm-deploy:
-    needs: build-and-push
+    if: github.event_name == 'workflow_dispatch'
     strategy:
       matrix:
         os: [ubuntu-latest]
