@@ -12,7 +12,7 @@ services:
       - '3000:3000'
   api:
     # build: ./api
-    iamge: moguda/ta_api
+    image: moguda/ta_api
     restart: always
     # volumes:
     #   - /app/node_modules
