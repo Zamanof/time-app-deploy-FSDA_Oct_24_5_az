@@ -56,4 +56,33 @@ jobs:
         run: |
           docker build -t ${{secrets.DOCKER_USERNAME}}/ta_front ./frontend
           docker push ${{secrets.DOCKER_USERNAME}}/ta_front
+  
+  aws-vm-deploy:
+    needs: build-and-push
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on: ${{matrix.os}}
+
+    steps:
+      - name: AWS VM SSH connect and deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{secrets.AWS_HOST}}
+          username: ${{secrets.AWS_USERNAME}}
+          key: ${{secrets.AWS_SSH_SECRET_KEY}}
+          port: 22
+
+          scripts: |
+            if [ ! -d "time-app-deploy-FSDA_Oct_24_5_az/.git" ]; then
+            git clone https://github.com/Zamanof/time-app-deploy-FSDA_Oct_24_5_az.git
+            fi
+
+            cd time-app-deploy-FSDA_Oct_24_5_az
+            git pull origin main
+            docker compose pull
+            docker compose down
+            docker compose up -d
+            docker image prun -f
     
