@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: AWS VM SSH connect and deploy
-        uses: appleboy/ssh-action@v1.0.1
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{secrets.AWS_HOST}}
           username: ${{secrets.AWS_USERNAME}}
@@ -84,5 +84,5 @@ jobs:
             docker compose pull
             docker compose down
             docker compose up -d
-            docker image prun -f
+            docker image prune -f
     
